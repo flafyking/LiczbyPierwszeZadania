@@ -1,0 +1,26 @@
+tabela = []
+i = 1
+def czyPierwsza(number):
+	if number < 2:
+		return False
+	for i in range(2, number - 1):
+		if number % i == 0:
+			return False
+	return True
+
+
+value = input("Podaj liczbe calkowita dodatnia: ")
+
+while czyPierwsza(int(value)) == False:
+	i += 1
+	if czyPierwsza(i) == True:
+		if int(value) % i == 0:
+			value = int(value) / i
+			tabela.append(i)
+			print("Dziele przez: ", i, " wynik: ", int(value))
+			i = 0
+tabela.append(int(value))
+print("Koniec rozkladu na czynniki pierwsze, ostatni czynnik pierwszy: ", int(value))
+print("Czynniki pierwsze:")
+for i in range(len(tabela)):
+	print(tabela[i])
